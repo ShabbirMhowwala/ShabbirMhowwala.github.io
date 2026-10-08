@@ -9,49 +9,124 @@
         
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #fdfbf7;
-            color: #4a4a4a;
+            background: linear-gradient(135deg, #f0f7f4 0%, #def0e6 100%);
+            color: #333;
             margin: 0;
             padding: 0;
             text-align: center;
+            overflow-x: hidden;
         }
+
+        /* Elegant Animations */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animated-section {
+            opacity: 0; 
+            animation: fadeInUp 1.2s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.3s; }
+        .delay-2 { animation-delay: 0.6s; }
+
         .hero {
-            padding: 60px 20px;
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            padding: 80px 20px 40px;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
         }
+        
         h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: 4rem;
-            color: #8b6d43;
-            margin: 10px 0;
+            font-size: 4.5rem;
+            color: #2c4a3d; 
+            margin: 5px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            animation: float 4s ease-in-out infinite;
         }
-        h2 {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-bottom: 30px;
-            letter-spacing: 1.5px;
+        
+        /* New Elegant Ampersand bridging the names */
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #cda53f; 
+            margin: -20px 0; /* Pulls the names closer together */
+            line-height: 1;
+            text-shadow: 1px 1px 3px rgba(205, 165, 63, 0.2);
         }
+
         .blessing {
             font-style: italic;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            color: #6a6a6a;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #637a6d;
+            letter-spacing: 1px;
         }
+        
         .details {
-            margin: 40px auto;
-            max-width: 600px;
-            padding: 30px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid #eaeaea;
+            margin: 20px auto 40px;
+            max-width: 500px;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(44, 74, 61, 0.1);
+            border: 2px solid #ebd188; 
+            backdrop-filter: blur(5px);
         }
-        .details p { margin: 10px 0; font-size: 1.1rem; }
-        .details h3 { color: #8b6d43; margin-top: 0; }
+        
+        .details p { margin: 12px 0; font-size: 1.1rem; line-height: 1.6; }
+        
+        .details h3 { 
+            color: #2c4a3d; 
+            margin-top: 0; 
+            font-size: 1.8rem;
+            border-bottom: 2px solid #cda53f;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .veg-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px dashed #c1d6cc;
+        }
+        
+        .veg-icon {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #2e7d32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+        }
+        .veg-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #2e7d32;
+            border-radius: 50%;
+        }
         
         .rsvp-section {
-            padding: 40px 20px 80px;
+            padding: 20px 20px 80px;
         }
+        
         form {
             max-width: 400px;
             margin: 0 auto;
@@ -59,62 +134,93 @@
             flex-direction: column;
             gap: 15px;
         }
+        
         input, select, button {
-            padding: 12px;
+            padding: 14px;
             font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            border: 1px solid #ebd188;
+            border-radius: 8px;
             font-family: 'Montserrat', sans-serif;
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
         }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #cda53f;
+            box-shadow: 0 0 8px rgba(205, 165, 63, 0.3);
+            background: #fff;
+        }
+        
         button {
-            background-color: #8b6d43;
-            color: white;
+            background: linear-gradient(45deg, #c49c2d, #dfb94e);
+            color: #ffffff;
             border: none;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.3s ease;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            animation: pulseGlow 2.5s infinite;
         }
-        button:hover { background-color: #715835; }
-        #success-msg { display: none; color: green; margin-top: 15px; }
+        
+        button:hover { 
+            background: linear-gradient(45deg, #b38b24, #cda53f);
+            transform: translateY(-2px);
+        }
+        
+        #success-msg { 
+            display: none; 
+            color: #2c4a3d; 
+            margin-top: 20px; 
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body>
 
-    <div class="hero">
+    <div class="hero animated-section">
         <p class="blessing">✨️ With the blessings of the Almighty ✨️</p>
-        <p>We are delighted to invite you to the Wedding Celebrations of our beloved Daughter ~</p>
+        <p style="color: #4a5c53;">We are delighted to invite you to the Wedding Celebrations of our beloved Daughter ~</p>
         
         <h1>Zainab</h1>
-        <p style="font-size:1.2rem; color:#8b6d43;">💍 With</p>
+        <!-- Replaced Emoji with Elegant Ampersand -->
+        <p class="ampersand">&</p>
         <h1>Yahaya</h1>
     </div>
 
-    <div class="details">
+    <div class="details animated-section delay-1">
         <h3>🩷 Reception</h3>
         <p>📅 <strong>Saturday, 14th November</strong></p>
         <p>🕗 <strong>8 PM Onwards</strong></p>
         <p>📍 <strong>Hotel Jardin</strong><br>Teen Imli Square, Indore</p>
+        
+        <div class="veg-indicator">
+            <div class="veg-icon"><div class="veg-dot"></div></div>
+            <span style="font-size: 0.85rem; color: #5a7063; font-style: italic;">Pure Vegetarian Banquet</span>
+        </div>
+        
         <br>
-        <p style="font-style:italic;">Your presence and blessings will make our celebration truly special! 🌸</p>
-        <p>Warm regards,<br><strong>Mhowwala Family</strong></p>
+        <p style="font-style:italic; color: #cda53f;">Your presence and blessings will make our celebration truly special! 🌸</p>
+        <p style="margin-top: 20px; color: #4a5c53;">Warm regards,<br><strong style="color: #2c4a3d; font-size: 1.2rem;">Mhowwala Family</strong></p>
     </div>
 
-    <div class="rsvp-section">
-        <h2 style="color:#8b6d43">Kindly RSVP</h2>
+    <div class="rsvp-section animated-section delay-2">
+        <h2 style="color:#2c4a3d; font-family: 'Great Vibes', cursive; font-size: 2.5rem; margin-bottom: 20px;">Kindly RSVP</h2>
         <form id="rsvp-form">
             <input type="text" id="name" name="name" placeholder="Full Name" required>
-            
-            <input type="number" id="guests" name="guests" placeholder="Total Number of Guests Attending" min="1" max="10" required>
+            <input type="number" id="guests" name="guests" placeholder="Number of Guests (including yourself)" min="0" required>
             
             <select id="attending" name="attending" required>
                 <option value="" disabled selected>Will you be attending?</option>
-                <option value="Yes">Yes, Joyfully Accept</option>
-                <option value="No">No, Regretfully Decline</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
             </select>
             
             <button type="submit" id="submit-btn">Send RSVP</button>
         </form>
-        <p id="success-msg">Thank you! Your RSVP has been recorded successfully.</p>
+        <p id="success-msg">Thank you! Your RSVP has been recorded successfully. 🌸</p>
     </div>
 
     <script>
@@ -127,8 +233,8 @@
 
             const formData = new FormData(this);
             
-            // REPLACE THIS URL WITH YOUR DEPLOYED GOOGLE APPS SCRIPT URL!
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyC8992Ew9cD9LJR66j0dkcnR30RgSjNwPzLavyafa51oceCu9iFS-muREMHDS1Hp44_A/exec'; 
+            // REPLACE THIS URL WITH YOUR DEPLOYED GOOGLE APPS SCRIPT URL
+            const scriptURL = 'YOUR_WEB_APP_URL_HERE'; 
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
