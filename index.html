@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zainab & Yahaya - Wedding Invitation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fdfbf7;
+            color: #4a4a4a;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .hero {
+            padding: 60px 20px;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #8b6d43;
+            margin: 10px 0;
+        }
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 1.5px;
+        }
+        .blessing {
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #6a6a6a;
+        }
+        .details {
+            margin: 40px auto;
+            max-width: 600px;
+            padding: 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eaeaea;
+        }
+        .details p { margin: 10px 0; font-size: 1.1rem; }
+        .details h3 { color: #8b6d43; margin-top: 0; }
+        
+        .rsvp-section {
+            padding: 40px 20px 80px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input, select, button {
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        button {
+            background-color: #8b6d43;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        button:hover { background-color: #715835; }
+        #success-msg { display: none; color: green; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <p class="blessing">✨️ With the blessings of the Almighty ✨️</p>
+        <p>We are delighted to invite you to the Wedding Celebrations of our beloved Daughter ~</p>
+        
+        <h1>Zainab</h1>
+        <p style="font-size:1.2rem; color:#8b6d43;">💍 With</p>
+        <h1>Yahaya</h1>
+    </div>
+
+    <div class="details">
+        <h3>🩷 Reception</h3>
+        <p>📅 <strong>Saturday, 14th November</strong></p>
+        <p>🕗 <strong>8 PM Onwards</strong></p>
+        <p>📍 <strong>Hotel Jardin</strong><br>Teen Imli Square, Indore</p>
+        <br>
+        <p style="font-style:italic;">Your presence and blessings will make our celebration truly special! 🌸</p>
+        <p>Warm regards,<br><strong>Mhowwala Family</strong></p>
+    </div>
+
+    <div class="rsvp-section">
+        <h2 style="color:#8b6d43">Kindly RSVP</h2>
+        <form id="rsvp-form">
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+            
+            <input type="number" id="guests" name="guests" placeholder="Total Number of Guests Attending" min="1" max="10" required>
+            
+            <select id="attending" name="attending" required>
+                <option value="" disabled selected>Will you be attending?</option>
+                <option value="Yes">Yes, Joyfully Accept</option>
+                <option value="No">No, Regretfully Decline</option>
+            </select>
+            
+            <button type="submit" id="submit-btn">Send RSVP</button>
+        </form>
+        <p id="success-msg">Thank you! Your RSVP has been recorded successfully.</p>
+    </div>
+
+    <script>
+        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(this);
+            
+            // REPLACE THIS URL WITH YOUR DEPLOYED GOOGLE APPS SCRIPT URL!
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyC8992Ew9cD9LJR66j0dkcnR30RgSjNwPzLavyafa51oceCu9iFS-muREMHDS1Hp44_A/exec'; 
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    document.getElementById('rsvp-form').style.display = 'none';
+                    document.getElementById('success-msg').style.display = 'block';
+                })
+                .catch(error => {
+                    alert('There was an error submitting your RSVP. Please try again.');
+                    submitBtn.innerText = 'Send RSVP';
+                    submitBtn.disabled = false;
+                });
+        });
+    </script>
+</body>
+</html>
